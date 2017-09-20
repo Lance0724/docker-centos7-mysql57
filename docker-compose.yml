@@ -1,0 +1,20 @@
+version: '2'
+services:
+  data-volume:
+    container_name: 'data-volume'
+    image: busybox
+    volumes: 
+    # - ./data/lib/mysql:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+      - ./data:/var/lib/mysql
+
+  mysql57:
+    container_name: 'mysql57'
+    #image: oshou/docker-centos7-mysql57:latest
+    build: .
+    env_file:
+      - conf/.env.mysql
+    volumes_from:
+      - data-volume
+    ports:
+      - 3306:3306
