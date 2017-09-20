@@ -1,5 +1,5 @@
 # Pull base image
-FROM mysql:5.7
+FROM centos:7
 
 # Locale
 RUN sed -i -e "s/LANG=\"en_US.UTF-8\"/LANG=\"ja_JP.UTF-8\"/g" /etc/locale.conf
